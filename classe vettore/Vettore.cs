@@ -8,8 +8,8 @@ namespace classe_vettore
 {
     internal class Vettore
     {
-        public double X { get; set; }
-        public double Y { get; set; }
+        public readonly double X;
+        public readonly double Y;
 
         public Vettore(double x, double y)
         {
@@ -57,8 +57,9 @@ namespace classe_vettore
             return new Vettore(-v.X, -v.Y);
         }
 
-        public static double Modulo(Vettore v)
+        public double Modulo(Vettore v)
         {
+            /* ha detto di non prendere in input valori*/
             double m;
             m = Math.Sqrt(v.X * v.X + v.Y * v.Y);
             return m;
@@ -91,15 +92,20 @@ namespace classe_vettore
             }
         }
 
-        /* public static bool operator ==(Vettore v1, Vettore v2)
+         public static bool operator ==(Vettore v1, Vettore v2)
          {
+            if (object.ReferenceEquals(v1, null))
+                return ReferenceEquals(v2, null);
+            else if (object.ReferenceEquals(v2, null))
+                return false;
+            else return v1.X == v2.X && v1.Y == v2.Y;
 
-         }
+        }
 
          public static bool operator !=(Vettore v1, Vettore v2)
          {
              return !(v1 == v2);
          }
-        */
+        
     }
 }
